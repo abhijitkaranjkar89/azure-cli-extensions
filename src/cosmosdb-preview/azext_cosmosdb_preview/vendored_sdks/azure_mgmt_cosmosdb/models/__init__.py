@@ -9,12 +9,14 @@
 try:
     from ._models_py3 import ARMProxyResource
     from ._models_py3 import ARMResourceProperties
+    from ._models_py3 import AnalyticalStorageConfiguration
     from ._models_py3 import ApiProperties
     from ._models_py3 import AutoUpgradePolicyResource
     from ._models_py3 import AutoscaleSettings
     from ._models_py3 import AutoscaleSettingsResource
     from ._models_py3 import BackupInformation
     from ._models_py3 import BackupPolicy
+    from ._models_py3 import BackupPolicyMigrationState
     from ._models_py3 import BackupResource
     from ._models_py3 import BackupResourceProperties
     from ._models_py3 import Capability
@@ -32,7 +34,18 @@ try:
     from ._models_py3 import CassandraTableGetResults
     from ._models_py3 import CassandraTableListResult
     from ._models_py3 import CassandraTableResource
+    from ._models_py3 import CassandraViewCreateUpdateParameters
+    from ._models_py3 import CassandraViewGetPropertiesOptions
+    from ._models_py3 import CassandraViewGetPropertiesResource
+    from ._models_py3 import CassandraViewGetResults
+    from ._models_py3 import CassandraViewListResult
+    from ._models_py3 import CassandraViewResource
     from ._models_py3 import Certificate
+    from ._models_py3 import ClientEncryptionKeyCreateUpdateParameters
+    from ._models_py3 import ClientEncryptionKeyGetPropertiesResource
+    from ._models_py3 import ClientEncryptionKeyGetResults
+    from ._models_py3 import ClientEncryptionKeyResource
+    from ._models_py3 import ClientEncryptionKeysListResult
     from ._models_py3 import ClusterKey
     from ._models_py3 import ClusterNodeStatus
     from ._models_py3 import ClusterNodeStatusNodesItem
@@ -56,7 +69,6 @@ try:
     from ._models_py3 import DataTransferServiceResourceProperties
     from ._models_py3 import DatabaseAccountConnectionString
     from ._models_py3 import DatabaseAccountCreateUpdateParameters
-    from ._models_py3 import DatabaseAccountCreateUpdateProperties
     from ._models_py3 import DatabaseAccountGetResults
     from ._models_py3 import DatabaseAccountListConnectionStringsResult
     from ._models_py3 import DatabaseAccountListKeysResult
@@ -65,12 +77,21 @@ try:
     from ._models_py3 import DatabaseAccountUpdateParameters
     from ._models_py3 import DatabaseAccountsListResult
     from ._models_py3 import DatabaseRestoreResource
-    from ._models_py3 import DefaultRequestDatabaseAccountCreateUpdateProperties
+    from ._models_py3 import DiagnosticLogSettings
     from ._models_py3 import ErrorResponse
     from ._models_py3 import ExcludedPath
     from ._models_py3 import ExtendedResourceProperties
     from ._models_py3 import FailoverPolicies
     from ._models_py3 import FailoverPolicy
+    from ._models_py3 import GraphAPIComputeRegionalServiceResource
+    from ._models_py3 import GraphAPIComputeServiceResource
+    from ._models_py3 import GraphAPIComputeServiceResourceProperties
+    from ._models_py3 import GraphResource
+    from ._models_py3 import GraphResourceCreateUpdateParameters
+    from ._models_py3 import GraphResourceGetPropertiesOptions
+    from ._models_py3 import GraphResourceGetPropertiesResource
+    from ._models_py3 import GraphResourceGetResults
+    from ._models_py3 import GraphResourcesListResult
     from ._models_py3 import GremlinDatabaseCreateUpdateParameters
     from ._models_py3 import GremlinDatabaseGetPropertiesOptions
     from ._models_py3 import GremlinDatabaseGetPropertiesResource
@@ -87,6 +108,7 @@ try:
     from ._models_py3 import Indexes
     from ._models_py3 import IndexingPolicy
     from ._models_py3 import IpAddressOrRange
+    from ._models_py3 import KeyWrapMetadata
     from ._models_py3 import ListBackups
     from ._models_py3 import ListClusters
     from ._models_py3 import ListDataCenters
@@ -117,6 +139,12 @@ try:
     from ._models_py3 import MongoIndex
     from ._models_py3 import MongoIndexKeys
     from ._models_py3 import MongoIndexOptions
+    from ._models_py3 import MongoRoleDefinitionCreateUpdateParameters
+    from ._models_py3 import MongoRoleDefinitionGetResults
+    from ._models_py3 import MongoRoleDefinitionListResult
+    from ._models_py3 import MongoUserDefinitionCreateUpdateParameters
+    from ._models_py3 import MongoUserDefinitionGetResults
+    from ._models_py3 import MongoUserDefinitionListResult
     from ._models_py3 import NotebookWorkspace
     from ._models_py3 import NotebookWorkspaceConnectionInfoResult
     from ._models_py3 import NotebookWorkspaceCreateUpdateParameters
@@ -141,6 +169,8 @@ try:
     from ._models_py3 import PrivateLinkResource
     from ._models_py3 import PrivateLinkResourceListResult
     from ._models_py3 import PrivateLinkServiceConnectionStateProperty
+    from ._models_py3 import Privilege
+    from ._models_py3 import PrivilegeResource
     from ._models_py3 import ProxyResource
     from ._models_py3 import RegionForOnlineOffline
     from ._models_py3 import RegionalServiceResource
@@ -166,9 +196,10 @@ try:
     from ._models_py3 import RestorableSqlDatabasesListResult
     from ._models_py3 import RestorableSqlResourcesListResult
     from ._models_py3 import RestoreParameters
-    from ._models_py3 import RestoreReqeustDatabaseAccountCreateUpdateProperties
+    from ._models_py3 import Role
     from ._models_py3 import SeedNode
     from ._models_py3 import ServiceResource
+    from ._models_py3 import ServiceResourceCreateUpdateParameters
     from ._models_py3 import ServiceResourceListResult
     from ._models_py3 import ServiceResourceProperties
     from ._models_py3 import SpatialSpec
@@ -228,12 +259,14 @@ try:
 except (SyntaxError, ImportError):
     from ._models import ARMProxyResource  # type: ignore
     from ._models import ARMResourceProperties  # type: ignore
+    from ._models import AnalyticalStorageConfiguration  # type: ignore
     from ._models import ApiProperties  # type: ignore
     from ._models import AutoUpgradePolicyResource  # type: ignore
     from ._models import AutoscaleSettings  # type: ignore
     from ._models import AutoscaleSettingsResource  # type: ignore
     from ._models import BackupInformation  # type: ignore
     from ._models import BackupPolicy  # type: ignore
+    from ._models import BackupPolicyMigrationState  # type: ignore
     from ._models import BackupResource  # type: ignore
     from ._models import BackupResourceProperties  # type: ignore
     from ._models import Capability  # type: ignore
@@ -251,7 +284,18 @@ except (SyntaxError, ImportError):
     from ._models import CassandraTableGetResults  # type: ignore
     from ._models import CassandraTableListResult  # type: ignore
     from ._models import CassandraTableResource  # type: ignore
+    from ._models import CassandraViewCreateUpdateParameters  # type: ignore
+    from ._models import CassandraViewGetPropertiesOptions  # type: ignore
+    from ._models import CassandraViewGetPropertiesResource  # type: ignore
+    from ._models import CassandraViewGetResults  # type: ignore
+    from ._models import CassandraViewListResult  # type: ignore
+    from ._models import CassandraViewResource  # type: ignore
     from ._models import Certificate  # type: ignore
+    from ._models import ClientEncryptionKeyCreateUpdateParameters  # type: ignore
+    from ._models import ClientEncryptionKeyGetPropertiesResource  # type: ignore
+    from ._models import ClientEncryptionKeyGetResults  # type: ignore
+    from ._models import ClientEncryptionKeyResource  # type: ignore
+    from ._models import ClientEncryptionKeysListResult  # type: ignore
     from ._models import ClusterKey  # type: ignore
     from ._models import ClusterNodeStatus  # type: ignore
     from ._models import ClusterNodeStatusNodesItem  # type: ignore
@@ -275,7 +319,6 @@ except (SyntaxError, ImportError):
     from ._models import DataTransferServiceResourceProperties  # type: ignore
     from ._models import DatabaseAccountConnectionString  # type: ignore
     from ._models import DatabaseAccountCreateUpdateParameters  # type: ignore
-    from ._models import DatabaseAccountCreateUpdateProperties  # type: ignore
     from ._models import DatabaseAccountGetResults  # type: ignore
     from ._models import DatabaseAccountListConnectionStringsResult  # type: ignore
     from ._models import DatabaseAccountListKeysResult  # type: ignore
@@ -284,12 +327,21 @@ except (SyntaxError, ImportError):
     from ._models import DatabaseAccountUpdateParameters  # type: ignore
     from ._models import DatabaseAccountsListResult  # type: ignore
     from ._models import DatabaseRestoreResource  # type: ignore
-    from ._models import DefaultRequestDatabaseAccountCreateUpdateProperties  # type: ignore
+    from ._models import DiagnosticLogSettings  # type: ignore
     from ._models import ErrorResponse  # type: ignore
     from ._models import ExcludedPath  # type: ignore
     from ._models import ExtendedResourceProperties  # type: ignore
     from ._models import FailoverPolicies  # type: ignore
     from ._models import FailoverPolicy  # type: ignore
+    from ._models import GraphAPIComputeRegionalServiceResource  # type: ignore
+    from ._models import GraphAPIComputeServiceResource  # type: ignore
+    from ._models import GraphAPIComputeServiceResourceProperties  # type: ignore
+    from ._models import GraphResource  # type: ignore
+    from ._models import GraphResourceCreateUpdateParameters  # type: ignore
+    from ._models import GraphResourceGetPropertiesOptions  # type: ignore
+    from ._models import GraphResourceGetPropertiesResource  # type: ignore
+    from ._models import GraphResourceGetResults  # type: ignore
+    from ._models import GraphResourcesListResult  # type: ignore
     from ._models import GremlinDatabaseCreateUpdateParameters  # type: ignore
     from ._models import GremlinDatabaseGetPropertiesOptions  # type: ignore
     from ._models import GremlinDatabaseGetPropertiesResource  # type: ignore
@@ -306,6 +358,7 @@ except (SyntaxError, ImportError):
     from ._models import Indexes  # type: ignore
     from ._models import IndexingPolicy  # type: ignore
     from ._models import IpAddressOrRange  # type: ignore
+    from ._models import KeyWrapMetadata  # type: ignore
     from ._models import ListBackups  # type: ignore
     from ._models import ListClusters  # type: ignore
     from ._models import ListDataCenters  # type: ignore
@@ -336,6 +389,12 @@ except (SyntaxError, ImportError):
     from ._models import MongoIndex  # type: ignore
     from ._models import MongoIndexKeys  # type: ignore
     from ._models import MongoIndexOptions  # type: ignore
+    from ._models import MongoRoleDefinitionCreateUpdateParameters  # type: ignore
+    from ._models import MongoRoleDefinitionGetResults  # type: ignore
+    from ._models import MongoRoleDefinitionListResult  # type: ignore
+    from ._models import MongoUserDefinitionCreateUpdateParameters  # type: ignore
+    from ._models import MongoUserDefinitionGetResults  # type: ignore
+    from ._models import MongoUserDefinitionListResult  # type: ignore
     from ._models import NotebookWorkspace  # type: ignore
     from ._models import NotebookWorkspaceConnectionInfoResult  # type: ignore
     from ._models import NotebookWorkspaceCreateUpdateParameters  # type: ignore
@@ -360,6 +419,8 @@ except (SyntaxError, ImportError):
     from ._models import PrivateLinkResource  # type: ignore
     from ._models import PrivateLinkResourceListResult  # type: ignore
     from ._models import PrivateLinkServiceConnectionStateProperty  # type: ignore
+    from ._models import Privilege  # type: ignore
+    from ._models import PrivilegeResource  # type: ignore
     from ._models import ProxyResource  # type: ignore
     from ._models import RegionForOnlineOffline  # type: ignore
     from ._models import RegionalServiceResource  # type: ignore
@@ -385,9 +446,10 @@ except (SyntaxError, ImportError):
     from ._models import RestorableSqlDatabasesListResult  # type: ignore
     from ._models import RestorableSqlResourcesListResult  # type: ignore
     from ._models import RestoreParameters  # type: ignore
-    from ._models import RestoreReqeustDatabaseAccountCreateUpdateProperties  # type: ignore
+    from ._models import Role  # type: ignore
     from ._models import SeedNode  # type: ignore
     from ._models import ServiceResource  # type: ignore
+    from ._models import ServiceResourceCreateUpdateParameters  # type: ignore
     from ._models import ServiceResourceListResult  # type: ignore
     from ._models import ServiceResourceProperties  # type: ignore
     from ._models import SpatialSpec  # type: ignore
@@ -446,8 +508,10 @@ except (SyntaxError, ImportError):
     from ._models import VirtualNetworkRule  # type: ignore
 
 from ._cosmos_db_management_client_enums import (
+    AnalyticalStorageSchemaType,
     ApiType,
     AuthenticationMethod,
+    BackupPolicyMigrationStatus,
     BackupPolicyType,
     BackupStorageRedundancy,
     CompositePathSortOrder,
@@ -458,10 +522,12 @@ from ._cosmos_db_management_client_enums import (
     DataType,
     DatabaseAccountKind,
     DefaultConsistencyLevel,
+    EnableFullTextQuery,
     IndexKind,
     IndexingMode,
     KeyKind,
     ManagedCassandraProvisioningState,
+    MongoRoleDefinitionType,
     NetworkAclBypass,
     NodeState,
     NodeStatus,
@@ -486,12 +552,14 @@ from ._cosmos_db_management_client_enums import (
 __all__ = [
     'ARMProxyResource',
     'ARMResourceProperties',
+    'AnalyticalStorageConfiguration',
     'ApiProperties',
     'AutoUpgradePolicyResource',
     'AutoscaleSettings',
     'AutoscaleSettingsResource',
     'BackupInformation',
     'BackupPolicy',
+    'BackupPolicyMigrationState',
     'BackupResource',
     'BackupResourceProperties',
     'Capability',
@@ -509,7 +577,18 @@ __all__ = [
     'CassandraTableGetResults',
     'CassandraTableListResult',
     'CassandraTableResource',
+    'CassandraViewCreateUpdateParameters',
+    'CassandraViewGetPropertiesOptions',
+    'CassandraViewGetPropertiesResource',
+    'CassandraViewGetResults',
+    'CassandraViewListResult',
+    'CassandraViewResource',
     'Certificate',
+    'ClientEncryptionKeyCreateUpdateParameters',
+    'ClientEncryptionKeyGetPropertiesResource',
+    'ClientEncryptionKeyGetResults',
+    'ClientEncryptionKeyResource',
+    'ClientEncryptionKeysListResult',
     'ClusterKey',
     'ClusterNodeStatus',
     'ClusterNodeStatusNodesItem',
@@ -533,7 +612,6 @@ __all__ = [
     'DataTransferServiceResourceProperties',
     'DatabaseAccountConnectionString',
     'DatabaseAccountCreateUpdateParameters',
-    'DatabaseAccountCreateUpdateProperties',
     'DatabaseAccountGetResults',
     'DatabaseAccountListConnectionStringsResult',
     'DatabaseAccountListKeysResult',
@@ -542,12 +620,21 @@ __all__ = [
     'DatabaseAccountUpdateParameters',
     'DatabaseAccountsListResult',
     'DatabaseRestoreResource',
-    'DefaultRequestDatabaseAccountCreateUpdateProperties',
+    'DiagnosticLogSettings',
     'ErrorResponse',
     'ExcludedPath',
     'ExtendedResourceProperties',
     'FailoverPolicies',
     'FailoverPolicy',
+    'GraphAPIComputeRegionalServiceResource',
+    'GraphAPIComputeServiceResource',
+    'GraphAPIComputeServiceResourceProperties',
+    'GraphResource',
+    'GraphResourceCreateUpdateParameters',
+    'GraphResourceGetPropertiesOptions',
+    'GraphResourceGetPropertiesResource',
+    'GraphResourceGetResults',
+    'GraphResourcesListResult',
     'GremlinDatabaseCreateUpdateParameters',
     'GremlinDatabaseGetPropertiesOptions',
     'GremlinDatabaseGetPropertiesResource',
@@ -564,6 +651,7 @@ __all__ = [
     'Indexes',
     'IndexingPolicy',
     'IpAddressOrRange',
+    'KeyWrapMetadata',
     'ListBackups',
     'ListClusters',
     'ListDataCenters',
@@ -594,6 +682,12 @@ __all__ = [
     'MongoIndex',
     'MongoIndexKeys',
     'MongoIndexOptions',
+    'MongoRoleDefinitionCreateUpdateParameters',
+    'MongoRoleDefinitionGetResults',
+    'MongoRoleDefinitionListResult',
+    'MongoUserDefinitionCreateUpdateParameters',
+    'MongoUserDefinitionGetResults',
+    'MongoUserDefinitionListResult',
     'NotebookWorkspace',
     'NotebookWorkspaceConnectionInfoResult',
     'NotebookWorkspaceCreateUpdateParameters',
@@ -618,6 +712,8 @@ __all__ = [
     'PrivateLinkResource',
     'PrivateLinkResourceListResult',
     'PrivateLinkServiceConnectionStateProperty',
+    'Privilege',
+    'PrivilegeResource',
     'ProxyResource',
     'RegionForOnlineOffline',
     'RegionalServiceResource',
@@ -643,9 +739,10 @@ __all__ = [
     'RestorableSqlDatabasesListResult',
     'RestorableSqlResourcesListResult',
     'RestoreParameters',
-    'RestoreReqeustDatabaseAccountCreateUpdateProperties',
+    'Role',
     'SeedNode',
     'ServiceResource',
+    'ServiceResourceCreateUpdateParameters',
     'ServiceResourceListResult',
     'ServiceResourceProperties',
     'SpatialSpec',
@@ -702,8 +799,10 @@ __all__ = [
     'Usage',
     'UsagesResult',
     'VirtualNetworkRule',
+    'AnalyticalStorageSchemaType',
     'ApiType',
     'AuthenticationMethod',
+    'BackupPolicyMigrationStatus',
     'BackupPolicyType',
     'BackupStorageRedundancy',
     'CompositePathSortOrder',
@@ -714,10 +813,12 @@ __all__ = [
     'DataType',
     'DatabaseAccountKind',
     'DefaultConsistencyLevel',
+    'EnableFullTextQuery',
     'IndexKind',
     'IndexingMode',
     'KeyKind',
     'ManagedCassandraProvisioningState',
+    'MongoRoleDefinitionType',
     'NetworkAclBypass',
     'NodeState',
     'NodeStatus',

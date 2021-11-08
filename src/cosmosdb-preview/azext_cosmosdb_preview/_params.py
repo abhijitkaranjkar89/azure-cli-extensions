@@ -4,6 +4,7 @@
 # --------------------------------------------------------------------------------------------
 # pylint: disable=line-too-long, too-many-statements
 
+from argcomplete.completers import FilesCompleter
 
 from azure.cli.core.commands.parameters import (
     get_resource_name_completion_list, name_type, get_enum_type, get_three_state_flag, get_location_type)
@@ -13,16 +14,43 @@ from azext_cosmosdb_preview._validators import (
     validate_gossip_certificates,
     validate_client_certificates,
     validate_seednodes,
-    validate_node_count)
+    validate_node_count,
+    validate_mongo_role_definition_body,
+    validate_mongo_role_definition_id,
+    validate_mongo_user_definition_body,
+    validate_mongo_user_definition_id)
 
 from azext_cosmosdb_preview.actions import (
     CreateLocation, CreateDatabaseRestoreResource, UtcDatetimeAction)
 
 from azext_cosmosdb_preview.vendored_sdks.azure_mgmt_cosmosdb.models import DefaultConsistencyLevel, DatabaseAccountKind, ServerVersion, BackupPolicyType
 
+MONGO_ROLE_DEFINITION_EXAMPLE = """--body "{
+\\"Id\\": \\"be79875a-2cc4-40d5-8958-566017875b39\\", 
+\\"RoleName\\": \\"MyRWRole\\", 
+\\"Type\\": \\"CustomRole\\"
+\\"DatabaseName\\": \\"MyDb\\", 
+\\"Privileges\\": [ {\\"Resource\\": {\\"Db\\": \\"MyDB\\",\\"Collection\\": \\"MyCol\\"},\\"Actions\\": [\\"insert\\",\\"find\\"]}],
+\\"Roles\\": [ {\\"Role\\": \\"myInheritedRole\\",\\"Db\\": \\"MyTestDb\\"}]
+}"
+"""
+
+MONGO_USER_DEFINITION_EXAMPLE = """--body "{
+\\"Id\\": \\"be79875a-2cc4-40d5-8958-566017875b39\\", 
+\\"UserName\\": \\"MyUserName\\", 
+\\"Password\\": \\"MyPass\\", 
+\\"CustomData\\": \\"MyCustomData\\",
+\\"Mechanisms\\": \\"SCRAM-SHA-256\\"
+\\"DatabaseName\\": \\"MyDb\\", 
+\\"Roles\\": [ {\\"Role\\": \\"myReadRole\\",\\"Db\\": \\"MyDb\\"}]
+}"
+"""
 
 def load_arguments(self, _):
     from azure.cli.core.commands.parameters import tags_type
+    from knack.arguments import CLIArgumentType
+
+    account_name_type = CLIArgumentType(options_list=['--account-name', '-a'], help="Cosmosdb account name.")
 
     with self.argument_context('cosmosdb') as c:
         c.argument('account_name', arg_type=name_type, help='Name of the Cosmos DB database account', completer=get_resource_name_completion_list('Microsoft.DocumentDb/databaseAccounts'), id_part='name')
@@ -175,3 +203,15 @@ def load_arguments(self, _):
     # Managed Cassandra Datacenter
     with self.argument_context('managed-cassandra datacenter list') as c:
         c.argument('cluster_name', options_list=['--cluster-name', '-c'], help="Cluster Name", required=True)
+
+    # Mongo role definition
+    with self.argument_context('cosmosdb mongodb role definition') as c:
+        c.argument('account_name', account_name_type, id_part=None)
+        c.argument('mongo_role_definition_id', options_list=['--id', '-i'], validator=validate_mongo_role_definition_id, help="Unique ID for the Mongo Role Definition.")
+        c.argument('mongo_role_definition_body', options_list=['--body', '-b'], validator=validate_mongo_role_definition_body, completer=FilesCompleter(), help="Role Definition body with Id (Optional for create), Type (Default is CustomRole), DatabaseName, Privileges, Roles.  You can enter it as a string or as a file, e.g., --body @mongo-role_definition-body-file.json or " + MONGO_ROLE_DEFINITION_EXAMPLE)
+
+    # Mongo user definition
+    with self.argument_context('cosmosdb mongodb user definition') as c:
+        c.argument('account_name', account_name_type, id_part=None)
+        c.argument('mongo_user_definition_id', options_list=['--id', '-i'], validator=validate_mongo_user_definition_id, help="Unique ID for the Mongo User Definition.")
+        c.argument('mongo_user_definition_body', options_list=['--body', '-b'], validator=validate_mongo_user_definition_body, completer=FilesCompleter(), help="User Definition body with Id (Optional for create), UserName, Password, DatabaseName, CustomData, Mechanisms, Roles.  You can enter it as a string or as a file, e.g., --body @mongo-user_definition-body-file.json or " + MONGO_USER_DEFINITION_EXAMPLE)

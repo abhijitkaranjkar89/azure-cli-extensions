@@ -7,6 +7,7 @@ This package provides commands to
 - List the different versions of databases and collections that were modified
 - Trigger a point in time restore on the Azure CosmosDB continuous mode backup accounts
 - Update the backup interval and backup retention of periodic mode backup accounts
+- Create and manage Role Definitions and User Definitions for enforcing data plane RBAC on Cosmos DB Mongo accounts
 
 ## How to use ##
 
@@ -116,4 +117,57 @@ az cosmosdb mongodb restorable-resource list \
     --location "westus" \
     --restore-location "westus" \
     --restore-timestamp "2020-07-20T16:09:53+0000"
+```
+
+#### Create a new Role Definition for a given Cosmos DB Mongo account
+
+```sh
+az cosmosdb mongodb role definition create \
+    --resource-group "my-rg" \
+    --account-name "my-mongo-account" \
+    --body "@mongo-role-definition-body.json"
+```
+
+#### List all Role Definitions for a given Cosmos DB Mongo account
+
+```sh
+az cosmosdb mongodb role definition list \
+    --resource-group "my-rg" \
+    --account-name "my-mongo-account"
+```
+
+#### Show a specific Role Definition for a given Cosmos DB Mongo account
+
+```sh
+az cosmosdb mongodb role definition list \
+    --resource-group "my-rg" \
+    --account-name "my-mongo-account" \
+    --id "my--mongo-role-def-id"
+```
+
+#### Delete a specific Role Definition for a given Cosmos DB Mongo account
+
+```sh
+az cosmosdb mongodb role definition delete \
+    --resource-group "my-rg" \
+    --account-name "my-mongo-account" \
+    --id "my--ongo-role-def-id"
+```
+
+#### Update an existing Role Definition for a given Cosmos DB Mongo account
+
+```sh
+az cosmosdb mongodb role definition update \
+    --resource-group "my-rg" \
+    --account-name "my-mongo-account" \
+    --body "@mongo-role-definition-body.json"
+```
+
+#### Check whether a specific Role Definition exists for a given Cosmos DB Mongo account
+
+```sh
+az cosmosdb mongodb role definition exists \
+    --resource-group "my-rg" \
+    --account-name "my-mongo-account" \
+    --id "my-mongo-role-def-id"
 ```
