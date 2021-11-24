@@ -219,10 +219,7 @@ def validate_mongo_role_definition_body(cmd, ns):
                     if 'Role' not in Role or not isinstance(Role['Role'], str) :
                         raise InvalidArgumentValueError(
                             'Invalid Mongo Role. A valid string Role is expected.')
-                    if 'Db' not in Role or not isinstance(Role['Db'], str) :
-                        raise InvalidArgumentValueError(
-                            'Invalid Mongo Db. A valid string database name is expected.')
-        
+                
         if 'Type' not in mongo_role_definition:
             mongo_role_definition['Type'] = RoleDefinitionType.custom_role
 
@@ -270,7 +267,7 @@ def validate_mongo_user_definition_body(cmd, ns):
             raise InvalidArgumentValueError(
                 'Invalid Mongo Custom Data parameter. A valid string custom data is expected.')
 
-        if 'Mechanisms' not in mongo_user_definition or not isinstance(mongo_user_definition['Mechanisms'], str) :
+        if 'Mechanisms' in mongo_user_definition and not isinstance(mongo_user_definition['Mechanisms'], str) :
             raise InvalidArgumentValueError(
                 'Invalid Mongo Mechanisms parameter. A valid string Mechanisms is expected.')
 
@@ -283,7 +280,7 @@ def validate_mongo_user_definition_body(cmd, ns):
                     if 'Role' not in Role or not isinstance(Role['Role'], str) :
                         raise InvalidArgumentValueError(
                             'Invalid Mongo Role. A valid string Role is expected.')
-                    if 'Db' not in Role or not isinstance(Role['Db'], str) :
+                    if 'Db' in Role and not isinstance(Role['Db'], str) :
                         raise InvalidArgumentValueError(
                             'Invalid Mongo Db. A valid string database name is expected.')
 
